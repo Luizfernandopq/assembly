@@ -14,14 +14,11 @@ _start:
     add rax, 1      
     mov [value], rax
 
-    mov rax, [value]                ; Carregar o valor em RAX
-    mov rdi, buffer                 ; Ponteiro para o buffer
-    call int_to_ascii               ; Converter inteiro para ASCII
 
     ; Exibir o valor convertido
     mov rax, 1                      ; syscall número para sys_write
     mov rdi, 1                      ; file descriptor 1 (stdout)
-    lea rsi, [buffer]               ; Ponteiro para o buffer
+    lea rsi, [value]               ; Ponteiro para o buffer
     mov rdx, 5                      ; Comprimento da string (ajuste conforme necessário)
     syscall                         ; Chamada de sistema
 
